@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+# Build output
+dist/
+# Logs
+logs/
+# Environment variables 
+.env
+# IDE specific files
+.vscode/
+# OS generated files
+.DS_Store
+Thumbs.db
+# documentation output
+docs/
+# Coverage reports
+coverage/
+# Temporary files
+tmp/
+# Yarn integrity file
+.yarn-integrity
+# NPM debug log
+npm-debug.log*
+# Yarn debug log
+yarn-debug.log* 
+# Yarn error log
+yarn-error.log*
+# Local build artifacts
+build/
+# Local cache
+.cache/
+# Local configuration files
+config.local.json
+# Local database files
+local-db.json

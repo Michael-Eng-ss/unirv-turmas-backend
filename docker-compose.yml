@@ -1,0 +1,12 @@
+services:
+  postgres:
+    container_name: postgres_crud_mvc
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: postgres_crud
+    volumes:
+      - ./data:/data/postgres
+    ports:
+      - "5432:5432"
