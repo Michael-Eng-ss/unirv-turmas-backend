@@ -9,7 +9,7 @@ const PORT = process.env.SERVER_PORT || 3000;
 async function startServer() {
   try {
     await DatabaseConnection.connect();
-    
+
     app.listen(PORT, () => {
       console.log(`🚀 Servidor rodando na porta ${PORT}`);
     });
@@ -21,7 +21,6 @@ async function startServer() {
 
 startServer();
 
-// Tratamento de encerramento
 process.on('SIGINT', async () => {
   await DatabaseConnection.disconnect();
   process.exit(0);

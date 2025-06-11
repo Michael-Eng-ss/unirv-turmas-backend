@@ -7,7 +7,7 @@ export class AlunoController {
   async getAll(req: Request, res: Response, next: NextFunction) {
     try {
       const alunos = await alunoService.findAll();
-      res.json(alunos); // Já está em maiúsculas
+      res.json(alunos);
     } catch (error: any) {
       next(error);
     }
@@ -22,7 +22,7 @@ export class AlunoController {
     try {
       const aluno = await alunoService.findById(id);
       if (aluno) {
-        res.json(aluno); // Já está em maiúsculas
+        res.json(aluno);
       } else {
         res.status(404).json({ error: 'Aluno não encontrado' });
       }
@@ -34,7 +34,7 @@ export class AlunoController {
   async create(req: Request, res: Response, next: NextFunction) {
     try {
       const aluno = await alunoService.create(req.body);
-      res.status(201).json(aluno); // Já está em maiúsculas
+      res.status(201).json(aluno);
     } catch (error: any) {
       res.status(400).json({ error: error.message });
     }
@@ -49,7 +49,7 @@ export class AlunoController {
     try {
       const aluno = await alunoService.update(id, req.body);
       if (aluno) {
-        res.json(aluno); // Já está em maiúsculas
+        res.json(aluno); 
       } else {
         res.status(404).json({ error: 'Aluno não encontrado' });
       }
@@ -63,7 +63,7 @@ export class AlunoController {
     try {
       const aluno = await alunoService.desativar(id);
       if (aluno) {
-        res.json(aluno); // Já está em maiúsculas
+        res.json(aluno); 
       } else {
         res.status(404).json({ error: 'Aluno não encontrado' });
       }
@@ -81,7 +81,7 @@ export class AlunoController {
     try {
       const aluno = await alunoService.reativar(id);
       if (aluno) {
-        res.json(aluno); // Já está em maiúsculas
+        res.json(aluno); 
       } else {
         res.status(404).json({ error: 'Aluno não encontrado' });
       }
@@ -93,7 +93,7 @@ export class AlunoController {
   async getInativos(req: Request, res: Response, next: NextFunction) {
     try {
       const alunos = await alunoService.findInativos();
-      res.json(alunos); // Já está em maiúsculas
+      res.json(alunos); 
     } catch (error: any) {
       next(error);
     }

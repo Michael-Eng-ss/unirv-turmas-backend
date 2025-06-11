@@ -8,7 +8,7 @@ export class Sala {
   id!: number;
 
   @Column()
-  numero!: string; // CAMPO ADICIONADO
+  numero!: string;
 
   @Column()
   nome!: string;

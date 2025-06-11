@@ -30,7 +30,7 @@ export class DatabaseConnection {
             username: process.env.DB_USERNAME,
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME,
-            schema: "public", // ADICIONE ESTA LINHA
+            schema: "public", 
             synchronize: true,
             logging: false,
             entities: [

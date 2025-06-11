@@ -33,7 +33,6 @@ export class TurmaController {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      // Converter IDs em objetos de relacionamento
       const turmaData = {
         ...req.body,
         professor: { id: req.body.professor_id },
@@ -56,7 +55,6 @@ export class TurmaController {
     }
     
     try {
-      // Converter IDs em objetos de relacionamento
       const turmaData = {
         ...req.body,
         professor: req.body.professor_id ? { id: req.body.professor_id } : undefined,

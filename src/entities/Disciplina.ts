@@ -17,16 +17,11 @@ export class Disciplina {
   periodo!: string;
 
   @Column({
-    type: 'enum',
-    enum: Status,
-    default: Status.ATIVO,
-    enumName: 'status_enum', 
-    transformer: {
-      to: (value: Status) => value,
-      from: (value: string) => value.toUpperCase()
-    }
-  })
-  status!: Status;
+  type: 'enum',
+  enum: Status,
+  default: Status.ATIVO,
+})
+status!: Status;
 
 
   @OneToMany(() => Turma, turma => turma.disciplina)
