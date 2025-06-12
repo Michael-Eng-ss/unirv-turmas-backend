@@ -23,7 +23,7 @@ export class Turma {
   })
   status!: Status;
 
-  @Column({ type: 'timestamp' }) 
+  @Column({ type: 'timestamp' })
   horario_inicio!: Date;
 
   @Column({ type: 'timestamp' })
