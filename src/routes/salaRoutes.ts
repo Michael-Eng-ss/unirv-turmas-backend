@@ -5,6 +5,7 @@ const router = express.Router();
 const salaController = new SalaController();
 
 router.get('/', salaController.getAll as RequestHandler);
+router.get('/inativos', salaController.getInativos as RequestHandler);
 router.get('/:id', salaController.getById as RequestHandler);
 router.post('/', salaController.create as RequestHandler);
 router.put('/:id', salaController.update as RequestHandler);

@@ -5,6 +5,7 @@ const router = express.Router();
 const professorController = new ProfessorController();
 
 router.get('/', professorController.getAll as RequestHandler);
+router.get('/inativos', professorController.getInativos as RequestHandler);
 router.get('/:id', professorController.getById as RequestHandler);
 router.post('/', professorController.create as RequestHandler);
 router.put('/:id', professorController.update as RequestHandler);

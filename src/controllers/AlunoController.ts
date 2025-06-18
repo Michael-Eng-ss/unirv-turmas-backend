@@ -95,7 +95,8 @@ export class AlunoController {
       const alunos = await alunoService.findInativos();
       res.json(alunos); 
     } catch (error: any) {
-      next(error);
+      console.error('Erro em getInativos:', error);
+      res.status(400).json({ message: 'Erro ao buscar alunos inativos', error: error.message || error });
     }
   }
 }
