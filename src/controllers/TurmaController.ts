@@ -59,7 +59,8 @@ export class TurmaController {
         ...req.body,
         professor: req.body.professor_id ? { id: req.body.professor_id } : undefined,
         disciplina: req.body.disciplina_id ? { id: req.body.disciplina_id } : undefined,
-        sala: req.body.sala_id ? { id: req.body.sala_id } : undefined
+        sala: req.body.sala_id ? { id: req.body.sala_id } : undefined,
+        capacidade: req.body.capacidade !== undefined ? req.body.capacidade : undefined,
       };
       
       const turma = await turmaService.update(id, turmaData);
@@ -133,6 +134,19 @@ export class TurmaController {
     try {
       const turmas = await turmaService.findInativas();
       res.json(turmas);
+    } catch (error: any) {
+      next(error);
+    }
+  }
+
+  async contarAlunos(req: Request, res: Response, next: NextFunction) {
+    const turmaId = parseInt(req.params.turmaId);
+    if (isNaN(turmaId)) {
+      return res.status(400).json({ error: 'ID inválido' });
+    }
+    try {
+      const count = await turmaService.contarAlunos(turmaId);
+      res.json({ quantidade: count });
     } catch (error: any) {
       next(error);
     }

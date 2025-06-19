@@ -13,5 +13,6 @@ router.patch('/:id/desativar', turmaController.desativar as RequestHandler);
 router.patch('/:id/reativar', turmaController.reativar as RequestHandler);
 router.post('/:turmaId/alunos/:alunoId', turmaController.adicionarAluno as RequestHandler);
 router.delete('/:turmaId/alunos/:alunoId', turmaController.removerAluno as RequestHandler);
+router.get('/:turmaId/contar-alunos', turmaController.contarAlunos as RequestHandler);
 
 export default router;

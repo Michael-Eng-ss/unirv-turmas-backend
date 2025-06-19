@@ -32,6 +32,9 @@ export class Turma {
   @Column()
   dia_semana!: string;
 
+  @Column({ type: 'int', default: 30 })
+  capacidade!: number;
+
   @ManyToOne(() => Professor, professor => professor.turmas)
   @JoinColumn({ name: 'professor_id' })
   professor!: Professor;

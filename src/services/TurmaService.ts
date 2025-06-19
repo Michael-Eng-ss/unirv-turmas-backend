@@ -139,6 +139,10 @@ export class TurmaService {
       throw new Error('Turma ou aluno não encontrado');
     }
 
+    if (turma.alunos.length >= turma.capacidade) {
+      throw new Error('Turma já atingiu a capacidade máxima de alunos');
+    }
+
     const existingMatricula = await this.turmaAlunoRepository.findOne({
       where: {
         turma: { id: turmaId },
@@ -183,5 +187,14 @@ export class TurmaService {
       where: { status: Status.ATIVO },
       relations: ['professor', 'disciplina', 'sala', 'alunos', 'alunos.aluno']
     });
+  }
+
+  async contarAlunos(turmaId: number): Promise<number> {
+    const turma = await this.turmaRepository.findOne({
+      where: { id: turmaId },
+      relations: ['alunos']
+    });
+    if (!turma) throw new Error('Turma não encontrada');
+    return turma.alunos.length;
   }
 }
