@@ -151,4 +151,17 @@ export class TurmaController {
       next(error);
     }
   }
+
+  async getAlunosDaTurma(req: Request, res: Response, next: NextFunction) {
+    const turmaId = parseInt(req.params.turmaId);
+    if (isNaN(turmaId)) {
+      return res.status(400).json({ error: 'ID inválido' });
+    }
+    try {
+      const alunos = await turmaService.getAlunosDaTurma(turmaId);
+      res.json(alunos);
+    } catch (error: any) {
+      next(error);
+    }
+  }
 }

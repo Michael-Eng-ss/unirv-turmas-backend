@@ -132,7 +132,10 @@ export class TurmaService {
   }
 
   async adicionarAluno(turmaId: number, alunoId: number) {
-    const turma = await this.turmaRepository.findOneBy({ id: turmaId });
+    const turma = await this.turmaRepository.findOne({
+      where: { id: turmaId },
+      relations: ['alunos'],
+    });
     const aluno = await DatabaseConnection.getDataSource().getRepository(Aluno).findOneBy({ id: alunoId });
 
     if (!turma || !aluno) {
@@ -197,4 +200,18 @@ export class TurmaService {
     if (!turma) throw new Error('Turma não encontrada');
     return turma.alunos.length;
   }
+
+  async getAlunosDaTurma(turmaId: number) {
+  const turmaRepository = DatabaseConnection.getDataSource().getRepository(Turma);
+  const turma = await turmaRepository.findOne({
+    where: { id: turmaId },
+    relations: ['alunos', 'alunos.aluno'], 
+  });
+  if (!turma) {
+    throw new Error('Turma não encontrada');
+  }
+
+  return turma.alunos.map((ta: TurmaAluno) => ta.aluno);
+}
+
 }
